@@ -1,25 +1,18 @@
-"use client";
+'use client';
+import { signIn, signOut, useSession } from 'next-auth/react';
 
-import { signIn, signOut, useSession } from "next-auth/react";
-
-export default function Home() {
+export default function Page() {
   const { data: session } = useSession();
 
   return (
-    <main className="flex flex-col items-center justify-center h-screen gap-4">
-      <h1 className="text-4xl font-bold text-blue-600">🚀 TeenTalk</h1>
-
-      {!session ? (
-        <button onClick={() => signIn("google")} className="btn">
-          Sign in with Google
-        </button>
-      ) : (
+    <main>
+      {session ? (
         <>
-          <p>Welcome, {session.user?.name}</p>
-          <button onClick={() => signOut()} className="btn">
-            Sign out
-          </button>
+          <p>Signed in as {session.user?.email}</p>
+          <button onClick={() => signOut()}>Sign out</button>
         </>
+      ) : (
+        <button onClick={() => signIn('google')}>Sign in with Google</button>
       )}
     </main>
   );
