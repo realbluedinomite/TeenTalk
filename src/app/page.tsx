@@ -1,16 +1,14 @@
-// src/app/page.tsx
-import dynamic from "next/dynamic";
+"use client"; // This makes the whole page render in the browser
+
 import Image from "next/image";
 import Link from "next/link";
-
-// Dynamically import Navbar to avoid prerender errors
-const Navbar = dynamic(() => import("../components/Navbar"), { ssr: false });
+import Navbar from "../components/Navbar"; // Navbar is already client-safe
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-purple-700 via-blue-800 to-black text-white flex flex-col items-center justify-center">
       
-      {/* Navbar (client-only) */}
+      {/* Navbar */}
       <Navbar />
 
       {/* Hero Section */}
@@ -44,7 +42,7 @@ export default function Home() {
         {/* Hero Illustration */}
         <div className="flex-1 relative">
           <Image
-            src="/hero-chat.png" // put this in public folder
+            src="/hero-chat.png"
             alt="TeenTalk Chat Illustration"
             width={600}
             height={400}
