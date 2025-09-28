@@ -4,14 +4,19 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import Image from "next/image";
 
 export default function Navbar() {
-  const { data: session } = useSession();
+  // Call useSession safely
+  const { data: session, status } = useSession();
 
   return (
     <nav className="flex justify-between items-center p-4 shadow-md bg-white">
       <h1 className="text-xl font-bold">TeenTalk</h1>
 
       <div className="flex items-center gap-4">
-        {session ? (
+        {/* While Next.js is hydrating */}
+        {status === "loading" ? (
+          <p>Loading...</p>
+        ) : session ? (
+          // ✅ Logged-in state
           <>
             <Image
               src={session.user?.image || "/default-avatar.png"}
@@ -28,6 +33,7 @@ export default function Navbar() {
             </button>
           </>
         ) : (
+          // ✅ Logged-out state
           <>
             <Image
               src="/default-avatar.png"
