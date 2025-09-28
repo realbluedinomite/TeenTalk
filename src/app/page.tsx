@@ -1,12 +1,16 @@
 // src/app/page.tsx
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
-import Navbar from "../components/Navbar";
+
+// Dynamically import Navbar to avoid prerender errors
+const Navbar = dynamic(() => import("../components/Navbar"), { ssr: false });
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-purple-700 via-blue-800 to-black text-white flex flex-col items-center justify-center">
-      {/* Navbar */}
+      
+      {/* Navbar (client-only) */}
       <Navbar />
 
       {/* Hero Section */}
