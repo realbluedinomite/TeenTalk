@@ -1,8 +1,8 @@
-"use client"; // This makes the whole page render in the browser
+"use client"; // Make the page a client component to safely use Navbar
 
 import Image from "next/image";
 import Link from "next/link";
-import Navbar from "../components/Navbar"; // Navbar is already client-safe
+import Navbar from "../components/Navbar";
 
 export default function Home() {
   return (
@@ -42,7 +42,7 @@ export default function Home() {
         {/* Hero Illustration */}
         <div className="flex-1 relative">
           <Image
-            src="/hero-chat.png"
+            src="/hero-chat.png" // Make sure this exists in /public
             alt="TeenTalk Chat Illustration"
             width={600}
             height={400}

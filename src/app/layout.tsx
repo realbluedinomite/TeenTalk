@@ -1,13 +1,14 @@
-import "./globals.css";
-import Navbar from "@/components/Navbar";
+"use client"; // Required because SessionProvider is client-only
+
+import { SessionProvider } from "next-auth/react";
+import "../globals.css"; // Tailwind/global styles
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body>
-        <Navbar />
-        {children}
-      </body>
-    </html>
+    <SessionProvider>
+      <html lang="en">
+        <body>{children}</body>
+      </html>
+    </SessionProvider>
   );
 }
