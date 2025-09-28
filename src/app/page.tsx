@@ -1,31 +1,20 @@
 // src/app/page.tsx
 import Image from "next/image";
 import Link from "next/link";
+import Navbar from "../components/Navbar";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-purple-700 via-blue-800 to-black text-white flex flex-col items-center justify-center">
       {/* Navbar */}
-      <nav className="absolute top-0 w-full flex justify-between items-center px-8 py-4">
-        <h1 className="text-2xl font-bold">TeenTalk</h1>
-        <div className="space-x-6 hidden md:flex">
-          <Link href="#features">Features</Link>
-          <Link href="#about">About</Link>
-          <Link href="#support">Support</Link>
-        </div>
-        <Link
-          href="/login"
-          className="bg-white text-black px-4 py-2 rounded-full font-medium hover:opacity-90 transition"
-        >
-          Open TeenTalk
-        </Link>
-      </nav>
+      <Navbar />
 
       {/* Hero Section */}
       <section className="flex flex-col md:flex-row items-center max-w-6xl px-8 gap-12 text-center md:text-left">
         <div className="flex-1">
           <h2 className="text-5xl md:text-6xl font-extrabold leading-tight">
-            Group Chat <br /> That’s All <span className="text-purple-300">Fun & Safe</span>
+            Group Chat <br /> That’s All{" "}
+            <span className="text-purple-300">Fun & Safe</span>
           </h2>
           <p className="mt-6 text-lg text-gray-200">
             TeenTalk is your space to chat, connect, and build friendships. 
@@ -51,7 +40,7 @@ export default function Home() {
         {/* Hero Illustration */}
         <div className="flex-1 relative">
           <Image
-            src="/hero-chat.png" // replace with your illustration (put in public folder)
+            src="/hero-chat.png" // put this in public folder
             alt="TeenTalk Chat Illustration"
             width={600}
             height={400}
